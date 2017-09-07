@@ -1,10 +1,14 @@
 package com.example.mocro.youssefbentaher_pset1;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ieyes = (ImageView) findViewById(R.id.imageEyes);
 
     }
+
 
     public void hatClicked(View view){
         boolean checked = ((CheckBox) view).isChecked();
@@ -40,6 +45,32 @@ public class MainActivity extends AppCompatActivity {
         else{
             ieyes.setVisibility(View.INVISIBLE);
         }
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        int hatValue = ihat.getVisibility();
+        if(hatValue == View.VISIBLE){
+            outState.putInt("hat", 1);
+        }
+        Log.d("patato", "head");
+
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        int hatInt = savedInstanceState.getInt("hat", 0);
+        if(hatInt == 1){
+            ihat.setVisibility(View.VISIBLE);
+        }
+        else{
+            ihat.setVisibility(View.INVISIBLE);
+        }
+
     }
 
 }
