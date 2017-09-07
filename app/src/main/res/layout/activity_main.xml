@@ -92,7 +92,7 @@
             android:background="@drawable/arms" />
 
         <ImageView
-            android:id="@+id/imageLegs"
+            android:id="@+id/imageShoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"
